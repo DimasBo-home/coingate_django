@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% block title %} List Order {% endblock %}
+
+{% block content %}
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th scope="col">№</th>
+			<th scope="col">Title</th>
+			<th scope="col">Price Amount</th>
+			<th scope="col">Price Curenncy</th>
+			<th scope="col">Receive Currency</th>
+			<th scope="col">Created Date</th>
+			<th scope="col">Status</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for order in object_list %}
+		<tr>
+			<th scope="row">{{ order.request_id }}</th>
+			
+			<td><a href="{{ order.get_absolute_url }}">{{ order.title }}</a></td>
+			<td>{{ order.price_amount }}</td>
+			<td>{{ order.price_currency }}</td>
+			<td>{{ order.receive_currency }}</td>
+			<td>{{ order.created_date }}</td>
+			<td>{{ order.status }}</td>
+		</tr>
+		{% endfor %}	  	
+	</tbody>
+</table>
+{% endblock %}

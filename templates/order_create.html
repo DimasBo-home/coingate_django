@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% block title %} Create Order {% endblock %}
+
+{% block content %}
+<details>
+	<summary  class="btn w-100 btn-info">Create Order</summary>
+	<form method="post" novalidate>
+		 {% csrf_token %}
+	    {{ form|crispy }}
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</details> 
+{% endblock %}

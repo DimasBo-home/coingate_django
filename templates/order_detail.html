@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Order | {{ order.title }}{% endblock %}
+
+{% block content %}
+<div class="row bg-info p-4">	
+	<h4 class="col-md-6">Title: {{ order.title }}</h1>
+	<h4 class="col-md-4">Order №{{ order.request_id }}</h4>
+	<small class="col-md-2 btn btn-warning">{{ order.status }}</small>
+	<ul class="col-12">
+		<li >price: {{ order.price_amount }} {{ order.price_currency }}</li>
+		<li >receive: {{ order.receive_amount }} {{ order.receive_currency }}</li>
+		<li >pay: {% if order.pay_amount %} {{order.pay_amount }} {{order.pay_currency }} {% else %} <span class="text-danger">payment not yet paid</span> {% endif %}</li>
+	</ul>
+	<ul class="col-12  bg-light p-2">
+		<li class = "list-group-item">Payment url:<a href="{{order.payment_url}}">{{ order.payment_url }}</a></li>
+	<p>{{order.description}}</p>
+	<h6 class="col-12">Create date: {{order.created_date}}</h6>
+</div>
+{% endblock %}
